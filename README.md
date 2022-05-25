@@ -6,11 +6,13 @@ This is a reference implementation of a simple barebones PHP API.
 
 ```bash
 docker-compose up
-
-# Use your favtorite
 ```
+
+# Youtube Reference
+
+[![Reference Video](docs/video-intro.jpg)](https://www.youtube.com/watch?v=YRWdQpPZddY)
 
 # References
 
 - https://code.tutsplus.com/tutorials/how-to-build-a-simple-rest-api-in-php--cms-37000
-- http://localhost:8000/index.php/user/list?limit=20
+- http://localhost:8000/index.php/usimage.pngimage.png
