@@ -14,5 +14,5 @@ docker-compose up
 
 # References
 
-- https://code.tutsplus.com/tutorials/how-to-build-a-simple-rest-api-in-php--cms-37000
-- http://localhost:8000/index.php/usimage.pngimage.png
+- Simple API Reference: https://code.tutsplus.com/tutorials/how-to-build-a-simple-rest-api-in-php--cms-37000
+- PHP Docker Builder: https://phpdocker.io/ 
