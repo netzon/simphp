@@ -39,7 +39,7 @@ services:
       - '8000:80'
 
   php-fpm:
-    build: phpdocker/php-fpm
+    build: phpdocker/php74-fpm
     working_dir: /application
     volumes:
       - '.:/application'

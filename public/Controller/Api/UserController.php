@@ -9,20 +9,21 @@ class UserController extends BaseController
     {
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
-        $arrQueryStringParams = $this->getQueryStringParams();
+
+        $this->loadQueryParams();
 
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $userModel = new UserModel();
 
                 $intPage = 1;
-                if (isset($arrQueryStringParams['page']) && $arrQueryStringParams['page']) {
-                    $intPage = $arrQueryStringParams['page'];
+                if (isset($this->queryParams['page']) && $this->queryParams['page']) {
+                    $intPage = $this->queryParams['page'];
                 }
 
                 $intLimit = 10;
-                if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
-                    $intLimit = $arrQueryStringParams['limit'];
+                if (isset($this->queryParams['limit']) && $this->queryParams['limit']) {
+                    $intLimit = $this->queryParams['limit'];
                 }
 
                 $arrUsers = $userModel->getUsers($intPage, $intLimit);
