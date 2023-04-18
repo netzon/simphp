@@ -10,7 +10,7 @@ docker-compose up
 
 # Youtube Reference
 
-[![Reference Video](docs/video-intro.jpg)](https://www.youtube.com/watch?v=YRWdQpPZddY)
+[![Reference Video](docs/video-intro.jpg)](https://www.youtube.com/watch?v=KcZ0_9DD51Q)
 
 # References
 
