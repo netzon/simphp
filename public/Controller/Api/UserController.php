@@ -1,4 +1,5 @@
 <?php
+
 class UserController extends BaseController
 {
     /**
@@ -9,27 +10,32 @@ class UserController extends BaseController
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         $arrQueryStringParams = $this->getQueryStringParams();
- 
+
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $userModel = new UserModel();
- 
+
+                $intPage = 1;
+                if (isset($arrQueryStringParams['page']) && $arrQueryStringParams['page']) {
+                    $intPage = $arrQueryStringParams['page'];
+                }
+
                 $intLimit = 10;
                 if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
                     $intLimit = $arrQueryStringParams['limit'];
                 }
- 
-                $arrUsers = $userModel->getUsers($intLimit);
+
+                $arrUsers = $userModel->getUsers($intPage, $intLimit);
                 $responseData = json_encode($arrUsers);
             } catch (Error $e) {
-                $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
+                $strErrorDesc = $e->getMessage() . 'Something went wrong! Please contact support.';
                 $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';
             }
         } else {
             $strErrorDesc = 'Method not supported';
             $strErrorHeader = 'HTTP/1.1 422 Unprocessable Entity';
         }
- 
+
         // send output
         if (!$strErrorDesc) {
             $this->sendOutput(
@@ -37,7 +43,7 @@ class UserController extends BaseController
                 array('Content-Type: application/json', 'HTTP/1.1 200 OK')
             );
         } else {
-            $this->sendOutput(json_encode(array('error' => $strErrorDesc)), 
+            $this->sendOutput(json_encode(array('error' => $strErrorDesc)),
                 array('Content-Type: application/json', $strErrorHeader)
             );
         }
